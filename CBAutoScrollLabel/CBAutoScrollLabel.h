@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, CBAutoScrollDirection) {
 @property (nonatomic) float scrollSpeed; // pixels per second, defaults to 30
 @property (nonatomic) NSTimeInterval pauseInterval; // defaults to 1.5
 @property (nonatomic) NSInteger labelSpacing; // pixels, defaults to 20
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 /**
  * The animation options used when scrolling the UILabels.
@@ -68,10 +69,10 @@ typedef NS_ENUM(NSInteger, CBAutoScrollDirection) {
 /**
  * Initiates auto-scroll, if the label width exceeds the bounds of the scrollview.
  */
-- (void)scrollLabelIfNeeded;
+- (void)scrollLabelIfNeededWithOffset:(CGFloat)offset;
 
 /**
- * Observes UIApplication state notifications to auto-restart scrolling and watch for 
+ * Observes UIApplication state notifications to auto-restart scrolling and watch for
  * orientation changes to refresh the labels.
  * @discussion Must be called to observe the notifications. Calling multiple times will still only
  * register the notifications once.
